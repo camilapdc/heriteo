@@ -141,6 +141,86 @@ nav a.hit { animation: hit .35s ease-out; }
 }
 .credits p { margin: 0; }
 
+/* ---------- about: the part below the fold ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+.sprite { display: inline-block; }
+.sprite svg { display: block; }
+
+.scroll-hint {
+  display: inline-block;
+  margin-top: 1.8em;
+  padding: 4px;
+  animation: nudge 1.2s steps(2, end) infinite;
+}
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.more {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 32px 16px;
+}
+.banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.story {
+  margin-top: 40px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.story p { margin: 0 0 1.4em; }
+.story a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.fairy { font-weight: 700; font-style: italic; }
+.cards { font-size: 16px; word-break: break-all; margin-top: 2em; }
+
+/* the little sheep running across the bottom of the page */
+.pasture {
+  position: relative;
+  height: 72px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+  margin-top: 24px;
+}
+.sheep {
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  animation: run 9s linear infinite;
+}
+.sheep svg { animation: bob .3s steps(1, end) infinite; }
+.sheep .frame-0 { animation: frame-a .3s steps(1, end) infinite; }
+.sheep .frame-1 { animation: frame-b .3s steps(1, end) infinite; }
+@keyframes run {
+  from { transform: translateX(-80px); }
+  to { transform: translateX(100vw); }
+}
+@keyframes bob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes frame-a {
+  0% { visibility: visible; }
+  50% { visibility: hidden; }
+}
+@keyframes frame-b {
+  0% { visibility: hidden; }
+  50% { visibility: visible; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint, .sheep, .sheep svg, .sheep .frame-0 { animation: none; }
+  .sheep { left: calc(50% - 36px); }
+  .sheep .frame-1 { visibility: hidden; animation: none; }
+}
+
 @media (max-width: 759px) {
   .page {
     grid-template-columns: minmax(0, 1fr);
@@ -150,6 +230,7 @@ nav a.hit { animation: hit .35s ease-out; }
   }
   .page { padding-bottom: 64px; }
   .credits { white-space: normal; }
+  .more { padding: 48px 16px 8px; }
   .archer { justify-self: start; }
   .archer canvas { width: min(42vw, 180px); }
 }
