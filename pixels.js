@@ -71,31 +71,31 @@
     sheep: {
       px: 3,
       frames: [[
-        '...KKK.KKK........',
-        '..KWWWKWWWKK......',
-        '.KWWWWWWWWWWK.KK..',
-        'KWWWWWWWWWWWKKKKK.',
-        'KWWWWWWWWWWWKKWKKK',
-        'KWWWWWWWWWWWKKKKKK',
-        '.KWWWWWWWWWWKKKK..',
-        '..KWWWWWWWWWK.....',
-        '...KKKKKKKKK......',
-        '..KK......KK......',
-        '.KK........KK.....',
-        'KK..........KK....',
+        '..KK.KKK.KK.....',
+        '.KWWKWWWKWWK....',
+        'KWWWWWWWWWWWK...',
+        '.KWWWWWWWWWWKKK.',
+        'KWWWWWWWWWWKKKKK',
+        'KWWWWWWWWWWKKWKK',
+        '.KWWWWWWWWWKKKKK',
+        'KWWWWWWWWWWWKKK.',
+        '.KWWKWWWKWWK....',
+        '..KK.KKK.KK.....',
+        '..K......K......',
+        '.K........K.....',
       ], [
-        '...KKK.KKK........',
-        '..KWWWKWWWKK......',
-        '.KWWWWWWWWWWK.KK..',
-        'KWWWWWWWWWWWKKKKK.',
-        'KWWWWWWWWWWWKKWKKK',
-        'KWWWWWWWWWWWKKKKKK',
-        '.KWWWWWWWWWWKKKK..',
-        '..KWWWWWWWWWK.....',
-        '...KKKKKKKKK......',
-        '....KK..KK........',
-        '....KK..KK........',
-        '....KK..KK........',
+        '..KK.KKK.KK.....',
+        '.KWWKWWWKWWK....',
+        'KWWWWWWWWWWWK...',
+        '.KWWWWWWWWWWKKK.',
+        'KWWWWWWWWWWKKKKK',
+        'KWWWWWWWWWWKKWKK',
+        '.KWWWWWWWWWKKKKK',
+        'KWWWWWWWWWWWKKK.',
+        '.KWWKWWWKWWK....',
+        '..KK.KKK.KK.....',
+        '...K....K.......',
+        '...K....K.......',
       ]],
     },
   };
@@ -128,7 +128,7 @@
   // In each pasture a sheep runs across and hops over the fence in the middle.
   // Positions snap to whole sprite pixels so the motion stays 8-bit.
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const PX = SPRITES.sheep.px, SPEED = 140, HOP = 42, REACH = 66;   // px/s, hop height, half the hop length
+  const PX = SPRITES.sheep.px, SPEED = 140, HOP = 45, REACH = 72;   // px/s, hop height, half the hop length
   const snap = v => Math.round(v / PX) * PX;
   const runners = [...document.querySelectorAll('.pasture')].map(pasture => {
     const sheep = pasture.querySelector('.sheep'), fence = pasture.querySelector('.fence');
