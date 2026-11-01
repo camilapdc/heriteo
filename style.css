@@ -40,6 +40,10 @@ body {
 
 a { color: inherit; }
 
+/* a little pixel bunny instead of the mouse pointer; the hotspot is its nose */
+html { cursor: url('bunny-cursor.svg') 2 18, auto; }
+a, button { cursor: url('bunny-cursor.svg') 2 18, pointer; }
+
 .page {
   min-height: 100vh;
   display: grid;
