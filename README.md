@@ -19,4 +19,4 @@ the site uses MonoLisa when it can find it. it is a paid font, so put your licen
 
 ## the drawing
 
-`rabbit.webp` is © camila palomo, all rights reserved.
+`rabbit.webp` is © heriteo, all rights reserved.
