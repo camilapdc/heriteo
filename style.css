@@ -31,8 +31,6 @@ html, body { margin: 0; }
 
 body {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background: var(--paper);
   color: var(--ink);
   font-family: 'MonoLisa', 'JetBrains Mono', ui-monospace, monospace;
@@ -43,12 +41,12 @@ body {
 a { color: inherit; }
 
 .page {
-  flex: 1;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: clamp(24px, 4vw, 64px);
-  padding: 32px clamp(16px, 6vw, 96px);
+  padding: 32px clamp(16px, 6vw, 96px) 48px;
 }
 
 .archer { justify-self: center; }
@@ -127,15 +125,19 @@ nav a.hit { animation: hit .35s ease-out; }
 .ig { margin-top: 1.4em; }
 .ig a, .credits a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
+/* one quiet line pinned to the bottom of the screen */
 .credits {
-  padding: 16px clamp(16px, 6vw, 96px) 20px;
-  font-size: 11px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 16px;
+  background: var(--paper);
+  font-size: 9px;
   font-weight: 300;
-  line-height: 1.6;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0 2.5em;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
 }
 .credits p { margin: 0; }
 
@@ -146,7 +148,8 @@ nav a.hit { animation: hit .35s ease-out; }
     gap: 16px;
     padding: 24px 16px;
   }
-  .credits { flex-direction: column; justify-content: flex-start; padding: 16px; }
+  .page { padding-bottom: 64px; }
+  .credits { white-space: normal; }
   .archer { justify-self: start; }
   .archer canvas { width: min(42vw, 180px); }
 }
