@@ -1,0 +1,134 @@
+/* MonoLisa is a paid font: put your licensed files in heriteo/fonts/ with these
+   names and it is used automatically. Until then, JetBrains Mono stands in. */
+@font-face {
+  font-family: 'MonoLisa';
+  src: local('MonoLisa'), url('fonts/MonoLisa-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MonoLisa';
+  src: local('MonoLisa Light'), url('fonts/MonoLisa-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MonoLisa';
+  src: local('MonoLisa Bold'), url('fonts/MonoLisa-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --paper: #fff;
+  --ink: #000;
+  --rule: rgba(0, 0, 0, .2);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'MonoLisa', 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+a { color: inherit; }
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: 32px clamp(16px, 6vw, 96px);
+}
+
+.archer { justify-self: center; }
+.archer canvas {
+  display: block;
+  width: clamp(150px, 17vw, 260px);
+  height: auto;
+}
+
+.side { max-width: 420px; }
+
+.title {
+  font-weight: 300;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1;
+  letter-spacing: 0;
+  margin: 0;
+}
+.title a { text-decoration: none; }
+
+.motto {
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0;
+  margin: .8em 0 2.2em;
+}
+
+nav ul { list-style: none; margin: 0; padding: 0; }
+nav li { margin: .5em 0; }
+nav a {
+  display: inline-block;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+nav a:hover .word,
+nav a:focus-visible .word,
+nav a[aria-current="page"] .word {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+nav a:focus-visible { outline: 1px dashed var(--ink); outline-offset: 4px; }
+
+/* the sound strokes that fly from the trumpet */
+.note {
+  position: absolute;
+  left: 0;
+  top: -1.5px;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ink);
+  pointer-events: none;
+  z-index: 10;
+}
+nav a.hit { animation: hit .35s ease-out; }
+@keyframes hit {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+.content {
+  margin-top: 2.2em;
+  padding-top: 1.4em;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.content p { margin: 0 0 .8em; }
+.def b { font-weight: 700; }
+
+@media (max-width: 759px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 16px;
+    padding: 24px 16px;
+  }
+  .archer { justify-self: start; }
+  .archer canvas { width: min(42vw, 180px); }
+}
