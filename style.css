@@ -160,18 +160,16 @@ nav a.hit { animation: hit .35s ease-out; }
   50% { transform: translateY(8px); }
 }
 
-.more {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 72px 32px 16px;
-}
+.more { padding-top: 72px; }
 .banner {
   display: block;
   width: 100%;
   height: auto;
 }
 .story {
-  margin-top: 40px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 32px 16px;
   font-size: 13px;
   font-weight: 300;
   line-height: 1.8;
@@ -179,29 +177,25 @@ nav a.hit { animation: hit .35s ease-out; }
 .story p { margin: 0 0 1.4em; }
 .story a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .fairy { font-weight: 700; font-style: italic; }
-.cards { font-size: 16px; word-break: break-all; margin-top: 2em; }
+.mail { vertical-align: -2px; margin-right: .6em; }
 
-/* the little sheep running across the bottom of the page */
+/* the pasture at the bottom: grass, flowers, a fence and a running sheep */
 .pasture {
   position: relative;
-  height: 72px;
+  height: 96px;
   overflow: hidden;
   border-bottom: 1px solid var(--ink);
   margin-top: 24px;
 }
-.sheep {
-  position: absolute;
-  left: 0;
-  bottom: 1px;
-  animation: run 9s linear infinite;
-}
+.pasture .sprite { position: absolute; bottom: 0; }
+.fence { left: calc(50% - 16px); }
+.sheep { left: calc(50% - 120px); z-index: 1; }
+.sheep.running { left: 0; }
 .sheep svg { animation: bob .3s steps(1, end) infinite; }
 .sheep .frame-0 { animation: frame-a .3s steps(1, end) infinite; }
 .sheep .frame-1 { animation: frame-b .3s steps(1, end) infinite; }
-@keyframes run {
-  from { transform: translateX(-80px); }
-  to { transform: translateX(100vw); }
-}
+.sheep.jumping svg, .sheep.jumping .frame-0 { animation: none; visibility: visible; }
+.sheep.jumping .frame-1 { animation: none; visibility: hidden; }
 @keyframes bob {
   0% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
@@ -216,8 +210,7 @@ nav a.hit { animation: hit .35s ease-out; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-hint, .sheep, .sheep svg, .sheep .frame-0 { animation: none; }
-  .sheep { left: calc(50% - 36px); }
+  .scroll-hint, .sheep svg, .sheep .frame-0 { animation: none; }
   .sheep .frame-1 { visibility: hidden; animation: none; }
 }
 
@@ -230,7 +223,8 @@ nav a.hit { animation: hit .35s ease-out; }
   }
   .page { padding-bottom: 64px; }
   .credits { white-space: normal; }
-  .more { padding: 48px 16px 8px; }
+  .more { padding-top: 48px; }
+  .story { padding: 32px 16px 8px; }
   .archer { justify-self: start; }
   .archer canvas { width: min(42vw, 180px); }
 }
