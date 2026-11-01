@@ -237,15 +237,15 @@ nav a.hit { animation: hit .35s ease-out; }
 
 /* photos zigzag down the page, a little sheep on the other side of each one */
 .gallery {
-  max-width: 880px;
+  max-width: 760px;
   margin: 8px auto 0;
   padding: 0 32px 96px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 72px 48px;
+  gap: 56px 48px;
   align-items: center;
 }
-.gallery img { display: block; width: 100%; height: auto; }
+.gallery img { display: block; width: 100%; max-width: 300px; height: auto; justify-self: center; }
 .lamb { justify-self: center; }
 .lamb svg { animation: graze 1.6s steps(1, end) infinite; }
 .lamb .frame-0 { animation: frame-a 1.6s steps(1, end) infinite; }
@@ -272,7 +272,9 @@ nav a.hit { animation: hit .35s ease-out; }
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
     padding: 0 16px 64px;
+    justify-items: center;
   }
+  .gallery img { max-width: 280px; }
   /* on a phone the photos stack, so every sheep sits between two of them */
   .gallery img:nth-of-type(1) { order: 1; }
   .gallery .lamb:nth-of-type(2) { order: 2; }
