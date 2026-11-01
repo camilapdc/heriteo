@@ -52,7 +52,7 @@ a { color: inherit; }
 .archer { justify-self: center; }
 .archer canvas {
   display: block;
-  width: clamp(150px, 17vw, 260px);
+  width: clamp(125px, 14vw, 215px);
   height: auto;
 }
 
@@ -113,11 +113,19 @@ nav a.hit { animation: hit .35s ease-out; }
 
 .content {
   margin-top: 2.2em;
-  padding-top: 1.4em;
-  border-top: 1px solid var(--rule);
   font-size: 13px;
   font-weight: 300;
   line-height: 1.8;
+}
+/* the separator: a row of little crosses, like the lettering in the banners */
+.content::before {
+  content: '× × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × ×';
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 11px;
+  line-height: 1;
+  margin-bottom: 1.6em;
 }
 .content p { margin: 0 0 .8em; }
 .def b { font-weight: 700; }
@@ -226,7 +234,7 @@ nav a.hit { animation: hit .35s ease-out; }
   .more { padding-top: 48px; }
   .story { padding: 32px 16px 8px; }
   .archer { justify-self: start; }
-  .archer canvas { width: min(42vw, 180px); }
+  .archer canvas { width: min(34vw, 150px); }
 }
 
 /* ---------- events ---------- */
