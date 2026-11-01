@@ -228,3 +228,58 @@ nav a.hit { animation: hit .35s ease-out; }
   .archer { justify-self: start; }
   .archer canvas { width: min(42vw, 180px); }
 }
+
+/* ---------- events ---------- */
+.event-title { font-weight: 700; }
+.story ul { margin: 0 0 1.4em; padding-left: 1.4em; list-style: '– '; }
+.story li { margin: 0 0 .4em; }
+.pasture + .past { padding-top: 72px; }
+
+/* photos zigzag down the page, a little sheep on the other side of each one */
+.gallery {
+  max-width: 880px;
+  margin: 8px auto 0;
+  padding: 0 32px 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 72px 48px;
+  align-items: center;
+}
+.gallery img { display: block; width: 100%; height: auto; }
+.lamb { justify-self: center; }
+.lamb svg { animation: graze 1.6s steps(1, end) infinite; }
+.lamb .frame-0 { animation: frame-a 1.6s steps(1, end) infinite; }
+.lamb .frame-1 { animation: frame-b 1.6s steps(1, end) infinite; }
+.lamb.flip svg { transform: scaleX(-1); animation-name: graze-flip; }
+@keyframes graze {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+@keyframes graze-flip {
+  0% { transform: scaleX(-1) translateY(0); }
+  50% { transform: scaleX(-1) translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamb svg { animation: none; }
+  .lamb .frame-0 { animation: none; }
+  .lamb .frame-1 { visibility: hidden; animation: none; }
+}
+
+@media (max-width: 759px) {
+  .pasture + .past { padding-top: 48px; }
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 0 16px 64px;
+  }
+  /* on a phone the photos stack, so every sheep sits between two of them */
+  .gallery img:nth-of-type(1) { order: 1; }
+  .gallery .lamb:nth-of-type(2) { order: 2; }
+  .gallery img:nth-of-type(2) { order: 3; }
+  .gallery .lamb:nth-of-type(3) { order: 4; }
+  .gallery img:nth-of-type(3) { order: 5; }
+  .gallery .lamb:nth-of-type(4) { order: 6; }
+  .gallery img:nth-of-type(4) { order: 7; }
+  .gallery .lamb:nth-of-type(1) { display: none; }
+}

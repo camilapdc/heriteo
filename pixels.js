@@ -99,6 +99,7 @@
       ]],
     },
   };
+  SPRITES.lamb = { px: 2, frames: SPRITES.sheep.frames };   // a mini sheep for the photo gallery
   const NS = 'http://www.w3.org/2000/svg';
   const make = (tag, attrs) => {
     const el = document.createElementNS(NS, tag);
@@ -124,27 +125,32 @@
     host.appendChild(svg);
   });
 
-  // The sheep runs across the pasture and hops over the fence in the middle.
+  // In each pasture a sheep runs across and hops over the fence in the middle.
   // Positions snap to whole sprite pixels so the motion stays 8-bit.
-  const pasture = document.querySelector('.pasture');
-  const sheep = pasture && pasture.querySelector('.sheep');
-  const fence = pasture && pasture.querySelector('.fence');
-  if (!sheep || !fence || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const PX = SPRITES.sheep.px, SPEED = 140, HOP = 42, REACH = 66;   // px/s, hop height, half the hop length
-  let x = -sheep.offsetWidth, last = performance.now();
-  sheep.classList.add('running');
+  const snap = v => Math.round(v / PX) * PX;
+  const runners = [...document.querySelectorAll('.pasture')].map(pasture => {
+    const sheep = pasture.querySelector('.sheep'), fence = pasture.querySelector('.fence');
+    if (!sheep || !fence) return null;
+    sheep.classList.add('running');
+    return { pasture, sheep, fence, x: -sheep.offsetWidth };
+  }).filter(Boolean);
+  if (!runners.length) return;
+
+  let last = performance.now();
   (function step(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
-    const w = sheep.offsetWidth, width = pasture.clientWidth;
-    x += SPEED * dt;
-    if (x > width) x = -w;
-    const d = x + w / 2 - (fence.offsetLeft + fence.offsetWidth / 2);
-    const y = Math.abs(d) < REACH ? HOP * (1 - (d / REACH) ** 2) : 0;
-    sheep.classList.toggle('jumping', y > 0);
-    const snap = v => Math.round(v / PX) * PX;
-    sheep.style.transform = `translate(${snap(x)}px, ${-snap(y)}px)`;
+    runners.forEach(r => {
+      const w = r.sheep.offsetWidth, width = r.pasture.clientWidth;
+      r.x += SPEED * dt;
+      if (r.x > width) r.x = -w;
+      const d = r.x + w / 2 - (r.fence.offsetLeft + r.fence.offsetWidth / 2);
+      const y = Math.abs(d) < REACH ? HOP * (1 - (d / REACH) ** 2) : 0;
+      r.sheep.classList.toggle('jumping', y > 0);
+      r.sheep.style.transform = `translate(${snap(r.x)}px, ${-snap(y)}px)`;
+    });
     requestAnimationFrame(step);
   })(last);
 })();

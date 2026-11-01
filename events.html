@@ -25,16 +25,59 @@
       </ul>
     </nav>
     <section class="content">
-      <p class="soon">programme à venir · coming soon</p>
-      <!-- To add an event, copy this block above the "programme à venir" line:
-      <article class="event">
-        <p><b>12 juin 2027</b> · Abbaye de …</p>
-        <p>Titre de l'événement — une ligne de description.</p>
-      </article>
-      -->
+      <a class="scroll-hint" href="#more" aria-label="scroll down"><span class="sprite" data-sprite="arrow"></span></a>
     </section>
   </div>
 </main>
+<section class="more" id="more">
+  <img class="banner" src="coming-next.webp" width="2000" height="1000" alt="a misty forest, with the words: coming next">
+  <!-- To announce a new event, change the four lines below. -->
+  <div class="story event">
+    <p class="event-title">Writing workshop</p>
+    <p>Paris, France<br>February, 2027<br>Registrations will open in January</p>
+  </div>
+</section>
+<div class="pasture" aria-hidden="true">
+  <span class="sprite deco" data-sprite="grass" style="left: 6%"></span>
+  <span class="sprite deco" data-sprite="flower" style="left: 14%"></span>
+  <span class="sprite deco" data-sprite="grass" style="left: 25%"></span>
+  <span class="sprite deco" data-sprite="flower" style="left: 33%"></span>
+  <span class="sprite deco" data-sprite="grass" style="left: 41%"></span>
+  <span class="sprite fence" data-sprite="fence"></span>
+  <span class="sprite deco" data-sprite="grass" style="left: 58%"></span>
+  <span class="sprite deco" data-sprite="flower" style="left: 67%"></span>
+  <span class="sprite deco" data-sprite="grass" style="left: 76%"></span>
+  <span class="sprite deco" data-sprite="flower" style="left: 85%"></span>
+  <span class="sprite deco" data-sprite="grass" style="left: 93%"></span>
+  <span class="sprite sheep" data-sprite="sheep"></span>
+</div>
+<section class="more past">
+  <img class="banner" src="past-events.webp" width="2000" height="1000" alt="a ruined stone castle on a green hill, with the words: past events">
+  <div class="story event">
+    <p class="event-title">End of summer poetry writing workshop</p>
+    <p>Paris, France<br>September, 2026<br>Registrations closed</p>
+    <p>The program (2 hours):</p>
+    <ul>
+      <li>A short introduction to who we are and the idea behind our workshops</li>
+      <li>A close read of a poem by Alice Oswald, with a brief look at the poet</li>
+      <li>Three progressive writing exercises</li>
+      <li>An open “stage” for anyone who’d like to share</li>
+    </ul>
+    <p>The event in pictures:</p>
+  </div>
+  <!-- Photos alternate sides, with a little sheep on the other side of each one. -->
+  <div class="gallery">
+    <span class="sprite lamb" data-sprite="lamb" aria-hidden="true"></span>
+    <img src="photos/presenters.jpg" width="1200" height="800" loading="lazy" alt="two hosts presenting the end of summer poetry workshop next to a screen with its title">
+    <img src="photos/poem.jpg" width="1200" height="800" loading="lazy" alt="someone holding sheets of paper in front of a screen reading: dunt, a poem for a dried up river">
+    <span class="sprite lamb flip" data-sprite="lamb" aria-hidden="true"></span>
+    <span class="sprite lamb" data-sprite="lamb" aria-hidden="true"></span>
+    <img src="photos/writing.jpg" width="1200" height="800" loading="lazy" alt="participants writing around a low table with cake, tea and coloured pencils">
+    <img src="photos/cat.jpg" width="1200" height="800" loading="lazy" alt="a cream cat walking past the table, the printed poem and a plate of brownies">
+    <span class="sprite lamb flip" data-sprite="lamb" aria-hidden="true"></span>
+  </div>
+</section>
 <script src="rabbit.js"></script>
+<script src="pixels.js"></script>
 </body>
 </html>
