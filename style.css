@@ -40,9 +40,9 @@ body {
 
 a { color: inherit; }
 
-/* a little pixel sheep instead of the mouse pointer; the hotspot is its nose */
-html { cursor: url('sheep-cursor.svg') 2 12, auto; }
-a, button { cursor: url('sheep-cursor.svg') 2 12, pointer; }
+/* a tiny leaping bunny instead of the mouse pointer; the hotspot is its front paws */
+html { cursor: url('bunny-cursor.svg') 2 12, auto; }
+a, button { cursor: url('bunny-cursor.svg') 2 12, pointer; }
 
 .page {
   min-height: 100vh;
