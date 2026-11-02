@@ -132,7 +132,7 @@ nav a.hit { animation: hit .35s ease-out; }
   margin-bottom: 1.6em;
 }
 .content p { margin: 0 0 .8em; }
-.def b { font-weight: 700; }
+.def b, .motto b { font-weight: 700; }
 
 .ig { margin-top: 1.4em; }
 .ig a, .credits a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
